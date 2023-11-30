@@ -1,8 +1,8 @@
-# Windows Bootstrap Repo
+# Windots - Windows Bootstrap Repo
 
 ## Info
 
-For ease-of-use, set the `WINDOWS_BOOTSTRAP_DIR` env var to this abspath of this directory.
+For ease-of-use, set the `WINDOTS_DIR` env var to this abspath of this directory.
 
 ## Bootstrap scripts
 
@@ -18,7 +18,7 @@ I use [komorebi](https://github.com/LGUG2Z/komorebi) as my tiling window manager
     1. If you did not run the [essentials.bat](packages/essentials.bat) script, manually check:
         - `komorebic.exe` and `komorebi.exe` must be avaiable at `C:\Program Files\komorebi\bin\` (default `winget` install location)
         - `AutoHotkey.exe` (v2, 64-bit) must be installed and available on `$PATH`
-    2. **Manual Step**: Ensure the `KOMOREBI_CONFIG_HOME` var is set to `%WINDOWS_BOOTSTRAP_DIR%\config\komorebi\komorebi.ahk`
+    2. **Manual Step**: Ensure the `KOMOREBI_CONFIG_HOME` var is set to `%WINDOTS_DIR%\config\komorebi`
 - Once the requirements are met, to run komorebi on system boot simply copy `komorebic_ahk_startup.exe.lnk` to your windows startup dir (run `Win-r` + `shell:startup`).
     - On my workstation, this looks like `C:\Users\dgonz\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 - **Troubleshooting**:
