@@ -19,6 +19,7 @@ I use [komorebi](https://github.com/LGUG2Z/komorebi) as my tiling window manager
         - `komorebic.exe` and `komorebi.exe` must be avaiable at `C:\Program Files\komorebi\bin\` (default `winget` install location)
         - `AutoHotkey.exe` (v2, 64-bit) must be installed and available on `$PATH`
     2. **Manual Step**: Ensure the `KOMOREBI_CONFIG_HOME` var is set to `%WINDOTS_DIR%\config\komorebi`
+    3. **Manual Step**: Set the `KOMOREBI_AHK_EXE` env var to the location of your `AutoHotkey.exe`. E.g. `C:\Program Files\AutoHotkey\AutoHotkey.exe` or `C:\Users\jdgonzalez\AppData\Local\Programs\AutoHotkey\v2\AutoHotkey64.exe`
 - Once the requirements are met, to run komorebi on system boot simply copy `komorebic_ahk_startup.exe.lnk` to your windows startup dir (run `Win-r` + `shell:startup`).
     - On my workstation, this looks like `C:\Users\dgonz\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 - **Troubleshooting**:
