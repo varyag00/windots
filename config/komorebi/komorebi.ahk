@@ -28,11 +28,11 @@ WatchConfiguration("enable")
 ; Create named workspaces I-V on monitor 0
 EnsureNamedWorkspaces(0, "I II III IV V")
 ; You can do the same thing for secondary monitors too
-; EnsureNamedWorkspaces(1, "A B C D E F")
+EnsureNamedWorkspaces(1, "A B C D E F")
 
 ; Assign layouts to workspaces, possible values: bsp, columns, rows, vertical-stack, horizontal-stack, ultrawide-vertical-stack
 ; NOTE: assigning them a workspace layout prevents resizing
-NamedWorkspaceLayout("I", "ultrawide-vertical-stack")
+; NamedWorkspaceLayout("I", "ultrawide-vertical-stack")
 ; NamedWorkspaceLayout("II", "ultrawide-vertical-stack")
 ; NamedWorkspaceLayout("III", "vertical-stack")
 
@@ -61,18 +61,21 @@ InvisibleBorders(7, 0, 14, 7)
 
 ; Uncomment the next lines if you want a visual border around the active window
 ActiveWindowBorder("enable")
-ActiveWindowBorderColour(66, 165, 245, "single")
+; ActiveWindowBorderColour(66, 165, 245, "single")
 ;ActiveWindowBorderColour(256, 165, 66, "stack")
-ActiveWindowBorderColour(255, 51, 153, "monocle")
+; ActiveWindowBorderColour(255, 51, 153, "monocle")
 
 ; Nicer, more muted colours
 ; active/single = light green
 ActiveWindowBorderColour(161, 203, 187, "single")
-;ActiveWindowBorderColour(131, 165, 152, "stack")
 ; stack = blue
 ActiveWindowBorderColour(53, 114, 165, "stack")
 ; monacle = red
 ActiveWindowBorderColour(211, 134, 155, "monocle")
+
+; NOTE: CompleteConfiguration denotes the end of the declarative config,
+; NOTE: i.e. komorebi.exe can now safely start
+; Everything after this is for runtime declaractions like hotkeys
 CompleteConfiguration()
 
 
@@ -114,11 +117,15 @@ CompleteConfiguration()
 #l::Focus("right")
 #o::CycleFocus("previous")
 #i::CycleFocus("next")
-; Backup for RDP (win-L can't be bound)
+; Backup for RDP, when win-L cannot be bound
 #left::Focus("left")
 #down::Focus("down")
 #up::Focus("up")
 #right::Focus("right")
+
+; Focus
+#Enter::Promote()
+#!Enter::PromoteFocus()
 
 ; Move windows
 #+h::Move("left")
@@ -129,10 +136,6 @@ CompleteConfiguration()
 #+down::Move("down")
 #+up::Move("up")
 #+right::Move("right")
-
-; Focus
-#Enter::Promote()
-#!Enter::PromoteFocus()
 
 ; Stack windows
 #^h::Stack("left")
@@ -145,20 +148,17 @@ CompleteConfiguration()
 #^i::CycleStack("next")
 
 ; Resize
-; BUG: these don't reliably work
 #]::ResizeAxis("horizontal", "increase")
 #[::ResizeAxis("horizontal", "decrease")
-#!]::ResizeAxis("vertical", "increase")
-#![::ResizeAxis("vertical", "decrease")
+#+]::ResizeAxis("vertical", "increase")
+#+[::ResizeAxis("vertical", "decrease")
 
 ; Manipulate windows
-; #!t::ToggleFloat()
 #t::ToggleFloat()
-; #!f::ToggleMonocle()
 #f::ToggleMonocle()
 ;; BUG: appears broken; use my own win+m
-#^+!Enter::ToggleMaximize()
-#^+!Backspace::Minimize()
+#!up::ToggleMaximize()
+#!down::Minimize()
 
 ; Window manager options
 #!r::Retile()
@@ -168,7 +168,7 @@ CompleteConfiguration()
 ;; kill and restart process - finally confirmed working
 #!^r:: {
     Run "taskkill /f /im komorebi.exe"
-    Run "komorebic.exe start -a"
+    Run "komorebic.exe start -a --ahk"
     Reload
 }
 #!^s::Start("", true, "")
@@ -176,6 +176,7 @@ CompleteConfiguration()
 ;; nuke it
 #!^q::Run "taskkill /f /im komorebi.exe"
 #!^o::ReloadConfiguration()
+; NOTE: Sometimes works to reload
 #!^h::Reload
 
 ; Layouts
