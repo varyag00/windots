@@ -12,7 +12,7 @@ REM --- Gaming ---
 winget install -e --id Valve.Steam
 winget install -e --id EpicGames.EpicGamesLauncher
 winget install -e --id MoonlightGameStreamingProject.Moonlight
-REM winget install -e --id LizardByte.Sunshine
+winget install -e --id LizardByte.Sunshine
 winget install -e --id Nvidia.GeForceExperience
 
 REM --- Misc ---

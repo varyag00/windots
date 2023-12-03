@@ -35,3 +35,8 @@ I use [komorebi](https://github.com/LGUG2Z/komorebi) as my tiling window manager
 To run YASB, first make sure to [go through the installation and building instructions on the repo](https://github.com/da-rth/yasb), then run the [`start_yasb.bat`](start_yasb.bat).
 
 To get the proper icons, ensure that a Nerdfont is installed and specify it in [styles.css](config/.yasb/styles.css) (ctrl-f "font-family"). Default: [`MesloLGL Nerd Font`](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Meslo.zip)
+
+
+## Wezterm
+
+Ensure `$WEXTERM_CONFIG_FILE` points to the abspath of `config/wezterm/dot_config/wezterm/wezterm.lua`.
