@@ -37,13 +37,17 @@ EnsureNamedWorkspaces(1, "A B C D E F")
 ; NamedWorkspaceLayout("III", "vertical-stack")
 
 ; Set the gaps around the edge of the screen for a workspace
-NamedWorkspacePadding("I", 5)
-NamedWorkspacePadding("II", 5)
-NamedWorkspacePadding("III", 5)
+NamedWorkspacePadding("I", 0)
+NamedWorkspacePadding("II", 0)
+NamedWorkspacePadding("III", 0)
+NamedWorkspacePadding("IIII", 0)
+NamedWorkspacePadding("IV", 0)
 ; Set the gaps between the containers for a workspace
-NamedWorkspaceContainerPadding("I", 10)
-NamedWorkspaceContainerPadding("II", 10)
-NamedWorkspaceContainerPadding("III", 10)
+NamedWorkspaceContainerPadding("I", 0)
+NamedWorkspaceContainerPadding("II", 0)
+NamedWorkspaceContainerPadding("III", 0)
+NamedWorkspaceContainerPadding("IIII", 0)
+NamedWorkspaceContainerPadding("IV", 0)
 
 ; You can assign specific apps to named workspaces
 ; NamedWorkspaceRule("exe", "Vivaldi.exe", "I")
@@ -118,10 +122,10 @@ CompleteConfiguration()
 #o::CycleFocus("previous")
 #i::CycleFocus("next")
 ; Backup for RDP, when win-L cannot be bound
-#left::Focus("left")
-#down::Focus("down")
-#up::Focus("up")
-#right::Focus("right")
+; #left::Focus("left")
+; #down::Focus("down")
+; #up::Focus("up")
+; #right::Focus("right")
 
 ; Focus
 #Enter::Promote()
@@ -157,7 +161,7 @@ CompleteConfiguration()
 #t::ToggleFloat()
 #f::ToggleMonocle()
 ;; BUG: appears broken; use my own win+m
-#!up::ToggleMaximize()
+; #!up::ToggleMaximize()
 #!down::Minimize()
 
 ; Window manager options
@@ -207,6 +211,11 @@ CompleteConfiguration()
 ; --------------
 #+b::{
     Run "komorebic change-layout bsp", ,"Hide"
+}
+
+; TODO: custom layout; currently looks identical to ultrawide-vertical-stack
+#+n::{
+    Run "komorebic load-custom-layout $Env:KOMOREBI_CONFIG_HOME\custom\ultrawide.json", ,"Hide"
 }
 
 ;; Manage & Unmanage focused application
